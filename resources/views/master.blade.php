@@ -49,9 +49,7 @@
 		background-size: cover;
 		overflow: hidden;
 	}
-	
-		.datepicker{z-index:+1, !important}
-		
+			
 	</style>
 	
 </head>

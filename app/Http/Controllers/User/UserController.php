@@ -36,7 +36,6 @@ class UserController extends Controller
 	 */
 	public function index(Request $request, User $user)
 	{		 
-		$user = User::all()->hasRole('Developer');
 		return view('users.index')->with('user',$user);
 	}	
 	
