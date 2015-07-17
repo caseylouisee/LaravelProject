@@ -33,6 +33,11 @@
 					@if($user->hasRole('Developer'))
 						<figcaption class="ratings">
 						</br>
+						@if(Auth::user()->hasRole('Manager'))
+							@if($user->hasRole('Developer'))
+								<p><a class="btn btn-lg btn-success" href="/ratings/{{$user->id}}/create">Rate User</a></p>
+							@endif
+						@endif
 						<p>Rating:
 						@for ($i = 0; $i != $user->ratings()->avg('rating'); $i++)
 							<span class="fa fa-star"></span>
@@ -44,15 +49,8 @@
 			</div> <!-- class="col-md-3 text-center" --> 
 	</div> <!-- class="row" -->	
 	<hr />
-	
-	@if(Auth::user()->hasRole('Manager'))
-		@if($user->hasRole('Developer'))
-			<a class="btn btn-default pull-right" href="/ratings/{{$user->id}}/create">Rate User</a>
-		@endif
-	@endif
-	
+
 	@if($user->hasRole('Developer'))
-		<p><strong>Ratings:</strong></p>
 		@unless($user->ratings->isEmpty())
 			@foreach($user->ratings as $rating)
 				<div class="panel panel-default">
@@ -71,6 +69,7 @@
 						<p>{{$rating->comment}}</p>
 					</div> <!-- class="panel-body" -->
 				</div> <!-- class="panel panel-default" -->
+				
 			@endforeach
 		@endunless
 	@else
@@ -81,7 +80,6 @@
 			@endforeach
 		@endunless
 	@endif
-			
 	<hr/>
 	</br>
 	<p><a href="/users/">Back to Profiles</a></p>	

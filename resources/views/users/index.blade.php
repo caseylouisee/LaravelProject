@@ -11,7 +11,7 @@
 		</button></a>
 
 		<a href="/users/index/sort" title=""><button type="button" class="btn btn-default btn-xs">
-		  	<span class="glyphicon glyphicon-sort" aria-hidden="true"></span> 
+		  	<span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
 			Name
 		</button></a>
 
@@ -19,6 +19,7 @@
 	
 	<h1>Profiles</h1>
 	<hr />
+	
 	@foreach($user->get() as $users)
 	
 		<!-- style 1 -->
@@ -32,10 +33,11 @@
 					@endif
 				</div> <!-- class="col-md-2" -->
 				<div class="col-md-10">
-					<p><strong><a href="/users/{{$users->id}}">{{$users->name}}</a></strong>
-					@for ($i = 0; $i != $users->ratings()->avg('rating'); $i++)
-						<span class="pull-right fa fa-star"></span>
-					@endfor
+					<p>
+						<strong><a href="/users/{{$users->id}}">{{$users->name}}</a></strong>
+						@for ($i = 0; $i != $users->ratings()->avg('rating'); $i++)
+							<span class="pull-right fa fa-star"></span>
+						@endfor
 					</p>
 					@if(strlen($users->description)>150)
 						<p> 

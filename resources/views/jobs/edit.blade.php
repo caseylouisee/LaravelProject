@@ -19,22 +19,24 @@
 		</div> <!-- class="form-group" -->
 		
 		<div class="form-group">
-			{!! Form::label('bidding', 'Bidding - Open?') !!}
-			@if($job->bidding=='Open')
+			{!! Form::label('bidding', 'Bidding - closed?') !!}
+			@if($job->bidding=='Closed')
 				{!! Form::checkbox('bidding_checkbox', null, true, ['class'=>'form-control', 'style'=>'font-size: 20px']) !!}
 			@else
 				{!! Form::checkbox('bidding_checkbox', null,false, ['class'=>'form-control', 'style'=>'font-size: 20px']) !!}
 			@endif
 		</div> <!-- class="form-group" -->
 		
+		@if($job->bidding=='Closed')
 		<div class="form-group">
 			{!! Form::label('status', 'Completed') !!}
-			@if($job->status=='Complete')
+			@if($job->status=='Completed')
 				{!! Form::checkbox('status_checkbox', null, true, ['class'=>'form-control', 'style'=>'font-size: 20px']) !!}
 			@else
 				{!! Form::checkbox('status_checkbox', null, false, ['class'=>'form-control', 'style'=>'font-size: 20px']) !!}
 			@endif
 		</div> <!-- class="form-group" -->
+		@endif
 		
 		{!! Form::submit('Edit the Job!', array('class' => 'btn btn-primary form-control')) !!}
 		{!! Form::close() !!}

@@ -54,9 +54,9 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost'),
+            'host'      => env('DB_HOST', '127.0.0.1'),
             'unix_socket'   => '/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock',
-            'database'  => env('DB_DATABASE', 'project2 '),
+            'database'  => env('DB_DATABASE', 'project2'),
             'username'  => env('DB_USERNAME', 'root'),
             'password'  => env('DB_PASSWORD', 'december31'),
             'charset'   => 'utf8',

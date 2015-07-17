@@ -37,12 +37,16 @@ class RatingController extends Controller
 		$user = User::find($id);
 		if(!Auth::user()){
 			return Redirect::to('/auth/login')->with('alert', 'You do not have permission to create a review, please login');
+			
 		}else if(Auth::user()->hasRole('Developer')){
 			return Redirect::to('users')->with('alert', 'You do not have permission to create a review');
+			
 		}else if(Auth::user()->id==$id){
 			return Redirect::to('/manage')->with('alert', 'You cannot rate yourself');
+			
 		} else if($user->hasRole('Manager')){
 			return Redirect::to('/manage')->with('alert', 'You cannot rate a manager');
+			
 		} else if(Auth::user()->hasRole('Manager')){
 			return view('ratings.create')->with('id',$id);
 		}

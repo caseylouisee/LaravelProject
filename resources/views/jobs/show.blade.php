@@ -11,7 +11,7 @@
 	</div> <!-- class="jumbotron text-center" -->
 	<div class="col-md-8">
 		<p><strong>Description:</strong> {{$job->description}}<br></p>
-		<p> <strong>Created at:</strong> {{$job->created_at}}</p>
+		<p><strong>Created at:</strong> {{$job->created_at}}</p>
 	</div> <!-- class="col-md-4" -->
 	<div class="col-md-4">
 		<div class="panel panel-default">
@@ -21,7 +21,7 @@
 			<div class="panel-body">
 				<p>Listed by:</p>
 				@foreach($job->users()->get() as $user)
-					<p><a href="/users/{{$user->id}}">{{$user->name}}</a></p>
+					<li><a href="/users/{{$user->id}}">{{$user->name}}</a></li>
 				@endforeach
 				@if(count($job->users()->get()) > 1)
 					<p>Other listings from these managers:</p>

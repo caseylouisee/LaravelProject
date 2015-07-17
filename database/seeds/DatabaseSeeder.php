@@ -8,6 +8,7 @@ use App\Permission;
 use App\Tag;
 use App\Job;
 use App\Rating;
+use App\Bid;
 
 class DatabaseSeeder extends Seeder
 {
@@ -84,12 +85,15 @@ class DatabaseSeeder extends Seeder
         Job::create([
             'title' => $jobtitle,
             'description' => '100 entries need to be typed into an excel spreadsheet and then formatted to fit as many entries on a piece of A4 as possible when printed. ',
+            'bidding' => 'Closed',
+            'status' => 'Completed',
         ]);
         
         $jobtitle2 = str_replace('.','','Small calculator program');
         Job::create([
             'title' => $jobtitle2,
             'description' => 'The programme needs to include the basic functions - addition, subtraction, multiplication and division.',
+            'bidding' => 'Closed',
         ]);
         
         $jobtitle3 = str_replace('.','','Proof read an article');
@@ -119,6 +123,46 @@ class DatabaseSeeder extends Seeder
         $developer->display_name = 'Developer'; // optional
         $developer->description  = 'User is a developer.'; // optional
         $developer->save();
+        
+        Bid::create([
+            'user_id'=>3,
+            'job_id'=>1,
+            'proposal'=>'£30 to complete by tomorrow 3pm.',
+            'status' => 'Declined'
+        ]);
+        
+        Bid::create([
+            'user_id'=>4,
+            'job_id'=>1,
+            'proposal'=>'£50 to complete by tonight 9pm.',
+            'status' => 'Accepted'
+        ]);
+        
+        Bid::create([
+            'user_id'=>5,
+            'job_id'=>2,
+            'proposal'=>'£100 to complete within an hour of acceptance.',
+            'status' => 'Declined'
+        ]);
+        
+        Bid::create([
+            'user_id'=>3,
+            'job_id'=>2,
+            'proposal'=>'£30 to complete by tomorrow 4pm.',
+            'status' => 'Accepted'
+        ]);
+        
+        Bid::create([
+            'user_id'=>4,
+            'job_id'=>3,
+            'proposal'=>'£15 to complete by tomorrow 7pm.'
+        ]);
+        
+        Bid::create([
+            'user_id'=>5,
+            'job_id'=>3,
+            'proposal'=>'£30 to complete by tomorrow 3pm.'
+        ]);
         
         $user = User::find(1);
         $user->attachRole($manager);

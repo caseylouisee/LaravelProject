@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bid extends Model
 {
 	
-	protected $fillable = ['proposal'];
+	protected $fillable = ['user_id','job_id','proposal','status'];
 	
 	public function user(){
 		return $this->hasOne('App\User','bids');

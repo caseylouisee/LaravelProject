@@ -12,10 +12,10 @@
 		{!! Form::open(array('url' => array('ratings/store'))) !!}
 	
 			{!! Form::label('rating', 'Rating /5') !!}
-			{!! Form::text('rating', Input::old('rating'), ['placeholder'=>'Rating out of 5 here', 'class'=>'form-control', 'style'=>'font-size: 20px']) !!}
+			{!! Form::text('rating', null, ['placeholder'=>'Rating out of 5 here', 'class'=>'form-control', 'style'=>'font-size: 20px']) !!}
 
 			{!! Form::label('comment', 'Comment') !!}
-			{!! Form::textArea('comment', Input::old('rating'), ['placeholder'=>'Review here','class'=>'form-control', 'style'=>'font-size: 20px']) !!}
+			{!! Form::textArea('comment', null, ['placeholder'=>'Review here','class'=>'form-control', 'style'=>'font-size: 20px']) !!}
 			</br>
 	
 			{!! Form::hidden('userid', $id) !!}
