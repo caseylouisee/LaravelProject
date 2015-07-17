@@ -14,6 +14,9 @@
 $factory->define(App\User::class, function ($faker) {
     $name = str_replace('.','',$faker->name);
     $slug = str_replace(' ','-',strtolower($name));
+    $rand = rand(0,1);
+    $rand2 = rand(0,1);
+    $rand3 = rand(0,1);
     
     return [
         'name' => $name,

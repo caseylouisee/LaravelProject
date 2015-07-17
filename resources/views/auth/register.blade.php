@@ -1,41 +1,44 @@
 <!-- resources/views/auth/register.blade.php -->
 @extends('master')
-
 @section('title', 'Register')
 
 @section('content')	
-	<form method="POST" action="/auth/register">
-		{!! csrf_field() !!}
-
-		<div>
-			Name
-			<input type="text" name="name" value="{{ old('name') }}">
-		</div>
-
-		<div>
-			Email
-			<input type="email" name="email" value="{{ old('email') }}">
-		</div>
+	{!! csrf_field() !!}
+		<div class="col-md-12 form">
+			{!! Form::open(array('url' => 'auth/register')) !!}
 		
-		<div class="form-group">
-			Description
-			</br>
-			{!! Form::textarea('description') !!}
-		</div>		
+			<div class="form-group">
+		    	{!! Form::label('name', 'Name:') !!}<br />
+			    {!! Form::text('name', Input::old('name'), ['placeholder' => 'Name Here', 'class'=>'form-control', 'style'=>'font-size: 20px']) !!}
+			</div> <!-- class="form-group" -->
+		
+			<div class="form-group">
+			    {!! Form::label('email', 'Email Address:') !!}<br />
+			    {!! Form::text('email', Input::old('email'),['placeholder' => 'Email Here', 'class'=>'form-control', 'style'=>'font-size: 20px']) !!}
+			</div> <!-- class="form-group" -->
 
-		<div>
-			Password
-			<input type="password" name="password">
-		</div>
-
-		<div>
-			Confirm Password
-			<input type="password" name="password_confirmation">
-		</div>
-
-		<div>
-			<button type="submit" class="btn btn-primary">Register</button>
-		</div>
-	</form>	
+			<div class="form-group">
+				{!! Form::label('description', 'Description:') !!}<br />
+				{!! Form::textarea('description', null, ['class'=>'form-control', 'style'=>'font-size: 20px']) !!}
+			</div> <!-- class="form-group" -->
+		
+			<div class="form-group">
+			    {!! Form::label('password', 'Password:') !!}<br />
+			    {!! Form::password('password', ['placeholder' => 'Password Here','class'=>'form-control', 'style'=>'font-size: 20px']) !!}
+			</div> <!-- class="form-group" -->
+		
+			<div class="form-group">
+			    {!! Form::label('password_confirmation', 'Confirm Password:') !!}<br />
+		    	{!! Form::password('password_confirmation', ['placeholder' => 'Confirm Password','class'=>'form-control', 'style'=>'font-size: 20px']) !!}
+			</div> <!-- class="form-group" -->
+			
+			<div class="form-group">
+				{!! Form::label('Profile Image') !!}
+				{!! Form::file('image', null) !!}
+			</div> <!-- class="form-group" -->
+			
+			{!! Form::submit('Register', ['class' => 'btn btn-primary form-control']) !!}
+			{!! Form::close() !!}
+		</div> <!-- class="col-md-12" -->
 @endsection
 

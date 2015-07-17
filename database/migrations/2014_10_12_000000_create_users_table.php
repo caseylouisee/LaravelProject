@@ -15,10 +15,10 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('slug');
             $table->string('email')->unique();
             $table->string('password', 60);
-            $table->string('description', 255);
+            $table->longText('description');
+            $table->string('image')->default('http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png');
             $table->rememberToken();
             $table->timestamps();
         });

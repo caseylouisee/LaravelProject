@@ -65,11 +65,11 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         $name = str_replace('.','',$data['name']);
-        $slug = str_replace(' ','-',strtolower($name));
+        //$slug = str_replace(' ','-',strtolower($name));
         return User::create([
             'name' => $name,
             'email' => $data['email'],
-            'slug' => $slug,
+            //'slug' => $slug,
             'description' => $data['description'],
             'password' => bcrypt($data['password']),
         ]);
